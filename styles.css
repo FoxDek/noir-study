@@ -374,10 +374,17 @@ a {
 .hero__title {
   font-size: 4rem;
   padding-top: 100px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .hero__subtitle {
   font-size: 1.4rem;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .hero__list {
@@ -393,6 +400,18 @@ a {
   align-items: center;
   gap: 10px;
   text-align: left;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.8s ease forwards;
+}
+
+.hero__item:nth-child(1) { animation-delay: 0.2s; }
+.hero__item:nth-child(2) { animation-delay: 0.4s; }
+.hero__item:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 .hero__item-icon {
@@ -815,10 +834,12 @@ a {
 
 .footer__socials-item svg path {
   transition: stroke 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .footer__socials-item:hover svg path {
   stroke: var(--link-color-hover);
+  transform: scale(1.1);
 }
 
 .footer__socials-item img {
