@@ -12,3 +12,23 @@ window.addEventListener("scroll", function () {
     header.classList.remove("scrolled");
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".base-section");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05 }
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+});
